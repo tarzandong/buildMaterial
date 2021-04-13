@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/home",
+    "pages/rigist",
+    "pages/detail/detail"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap68.json"
+}

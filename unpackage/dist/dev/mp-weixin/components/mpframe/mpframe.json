@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "navibar": "/components/navibar/navibar",
+    "uni-popup": "/components/uni-popup/uni-popup",
+    "loading": "/components/loading/loading",
+    "uni-popup-message": "/components/uni-popup/uni-popup-message"
+  }
+}

@@ -1,0 +1,1 @@
+<view class="navbar" style="{{('top:'+$root.m0+'px;'+'width:100%;')}}"><view class="navlead"><slot name="lead"></slot></view><view class="navcenter"><slot name="center"></slot></view><view class="navtail"><slot name="tail"></slot></view></view>

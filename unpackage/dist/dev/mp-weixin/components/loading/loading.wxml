@@ -1,0 +1,1 @@
+<block wx:if="{{loading}}"><view class="loadingSeven"><label class="sp _span"></label><label class="sp _span"></label><label class="sp _span"></label><label class="sp _span"></label><label class="sp _span"></label></view></block>

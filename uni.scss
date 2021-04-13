@@ -1,0 +1,357 @@
+/**
+ * 这里是app内置的常用样式变量
+ *
+ * app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+
+/* 颜色变量 */
+
+/* 行为相关颜色 */
+$color-primary: #e6e6e6;
+$color-success: #0e918c;
+$color-warning: #f6830f;
+$color-error: #bb2205;
+
+// $color-primary: #3a6351;
+// $color-success: #0e918c;
+// $color-warning: #f6830f;
+// $color-error: #bb2205;
+
+// $color-primary: #faf3e0;
+// $color-success: #0e918c;
+// $color-warning: #f6830f;
+// $color-error: #bb2205;
+
+/* 文字基本颜色 */
+$text-color:#532e1c;//基本色
+$text-color-inverse:#393232;//反色
+$text-color-grey:lighten($text-color,20%);//辅助灰色，如加载更多的提示信息
+$text-color-placeholder: #c6c6c6;
+$text-color-disable:#c0c0c0;
+
+// $text-color:#f2edd7;//基本色
+// $text-color-inverse:#393232;//反色
+// $text-color-grey:#808080;//辅助灰色，如加载更多的提示信息
+// $text-color-placeholder: #808080;
+// $text-color-disable:#c0c0c0;
+
+// $text-color:#eabf9f;//基本色
+// $text-color-inverse:#393232;//反色
+// $text-color-grey:#ccc;//辅助灰色，如加载更多的提示信息
+// $text-color-placeholder: #808080;
+// $text-color-disable:#c0c0c0;
+
+/* 背景颜色 */
+// $bg-color:#e6e6e6;
+$bg-color:#eeeeee;
+
+$bg-active:rgba($bg-color,.5);
+$bg-color-grey:#f8f8f8;
+$bg-color-hover:#f1f1f1;//点击状态颜色
+$bg-color-mask:rgba(0, 0, 0, 0.4);//遮罩颜色
+
+// $bg-color:#3a6351;
+// $bg-active:#e48257;
+// $bg-color-grey:#f8f8f8;
+// $bg-color-hover:#f1f1f1;//点击状态颜色
+// $bg-color-mask:rgba(0, 0, 0, 0.4);//遮罩颜色
+
+// $bg-color:#faf3e0;
+// $bg-active:#b68973;
+// $bg-color-grey:#f8f8f8;
+// $bg-color-hover:#f1f1f1;//点击状态颜色
+// $bg-color-mask:rgba(0, 0, 0, 0.4);//遮罩颜色
+
+/* 边框颜色 */
+$border-color:#c8c7cc;
+
+/* 尺寸变量 */
+
+/* 文字尺寸 */
+$font-size-sm:24rpx;
+$font-size-base:28rpx;
+$font-size-lg:32rpx;
+
+/* 图片尺寸 */
+$img-size-sm:40rpx;
+$img-size-base:52rpx;
+$img-size-lg:80rpx;
+
+/* Border Radius */
+$border-radius-sm: 4rpx;
+$border-radius-base: 6rpx;
+$border-radius-lg: 12rpx;
+$border-radius-circle: 50%;
+
+/* 水平间距 */
+$spacing-row-sm: 10px;
+$spacing-row-base: 20rpx;
+$spacing-row-lg: 30rpx;
+
+/* 垂直间距 */
+$spacing-col-sm: 8rpx;
+$spacing-col-base: 16rpx;
+$spacing-col-lg: 24rpx;
+
+/* 透明度 */
+$opacity-disabled: 0.3; // 组件禁用态的透明度
+
+/* 文章场景相关 */
+$color-title: #2C405A; // 文章标题颜色
+$font-size-title:40rpx;
+$color-subtitle: darken($text-color,20%); // 二级标题颜色; // 二级标题颜色
+// $color-subtitle: #555555; // 二级标题颜色
+$font-size-subtitle:36rpx;
+$color-paragraph: #3F536E; // 文章段落颜色
+$font-size-paragraph:30rpx;
+
+
+.textc{
+	color: $text-color;
+}
+.hc{
+	color:$color-error;
+}
+.icon-mid{
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.icon-sm{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+}
+
+.block{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.tip{
+	width: 350px;
+	margin: auto;
+	font-size: 12px;
+	color: $text-color-grey;
+}
+
+.input1{
+	border-bottom: 1px solid $text-color;
+	
+}
+.phc{
+	color: $text-color-placeholder;
+}
+.button{
+	background-color: $color-warning;
+	line-height: 28px;
+	border-radius: 14px;
+	color: #fff;
+	// width: 100px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: center;
+	// color: $text-color-inverse;
+	font-size: 14px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.row{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		font-weight: lighter;
+		// justify-content: space-around;
+	}
+.f1{
+	flex:1;
+	text-align: center;
+}	
+.line{
+	border-bottom: 1px solid;
+	border-color: $text-color;
+}
+
+.lightShadow{
+	box-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff;
+	// transition: box-shadow 2s;
+}
+
+.lightText{
+	text-shadow: 0 0 5px #fff,0 0 10px #fff;
+}
+
+.centerTitle{
+	width: 100%;
+	display: block;
+	text-align: center;
+	font-weight: bold;
+}
+
+.mt{
+	margin-top: 10px;
+}	
+.mr{
+	margin-right: 10px;
+}
+.ml{
+	margin-left: 10px;
+}
+.pt{
+	padding-top: 10px;
+}
+.pb{
+	padding-bottom: 10px;
+}
+.pr{
+	padding-right: 10px;
+}
+.pl{
+	padding-left: 10px;
+}
+.bl{
+	border-left: 1px solid $text-color;
+}
+.br{
+	border-right: 1px solid $text-color;
+}
+.bt{
+	border-top: 1px solid $text-color;
+}
+.bb{
+	border-bottom: 1px solid $text-color;
+}
+
+.lh22{
+	line-height: 22px;
+}
+.lh28{
+	line-height: 28px;
+}
+.ul{
+	text-decoration: underline;
+}
+.fs12{
+	font-size: 12px;
+}
+.fs20{
+	font-size: 20px;
+}
+.fwb{
+	font-weight: bold;
+}
+.tableHead{
+	color: $color-subtitle;
+	font-size: 18px;
+}
+.strip{
+	background-color: darken($bg-active,20%);
+}
+
+.glass{
+	border-radius: 5px;
+	background-color: $bg-active;
+	backdrop-filter: blur(5px);
+}
+	
+.bedge{
+	background-color: red;
+	color: #fff;
+	width: 20px;
+	line-height: 20px;
+	text-align: center;
+	border-radius: 10px;
+	font-size: 8px;
+}
+
+.loading{
+	position: fixed;
+	top: 50%;
+	width: 100%;
+	z-index: 99;
+}
+
+.button1{
+	text-align: center;
+	background: $border-color;
+	box-shadow: inset 6px 6px 18px #aaa9ad,
+	            inset -6px -6px 18px #e6e5eb;
+}
+
+.button1:active{
+	box-shadow: none;
+}
+
+.button2{
+	text-align: center;
+	color: $text-color;
+	background: $border-color;
+	// box-shadow: inset 6px 6px 18px #e6e5eb,
+	//             inset -6px -6px 18px #aaa9ad;
+	box-shadow: 0 0 2px #fff,0 0 6px #fff,0 0 10px #fff;
+}
+
+.button2:active{
+	box-shadow: none;
+}
+
+.lightShadow:active{
+	box-shadow: none;
+}
+
+.buttonDelete{
+	
+	background: linear-gradient(145deg, #e14815, #bd3c12);
+	// box-shadow:  2px 2px 4px #b33911,-2px -2px 4px #f24d17;
+	box-shadow: 0 0 4px #b33911,0 0 4px #f24d17;
+}
+
+.buttonDelete:active{
+	box-shadow: none;
+}
+
+.card{
+	// width: 95%;
+	border-radius: 10px;
+	overflow: hidden;
+	border: 1px solid #999999;
+	box-shadow: 5px 8px 3px rgba(0,60,200,0.3);
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	padding: 10px 20px;
+	align-items: center;
+}
+
+.pf{
+	position: fixed;
+}
+
+.noWrap{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.w100{
+	width: 100px;
+}
+
+.prepend{
+	white-space: pre;
+}
