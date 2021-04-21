@@ -57,7 +57,7 @@
   border-bottom: 1px solid #532e1c;
 }
 .phc.data-v-7da806a4 {
-  color: #9f5836;
+  color: #c6c6c6;
 }
 .button.data-v-7da806a4 {
   background-color: #f6830f;
@@ -259,6 +259,16 @@
 }
 .pf.data-v-7da806a4 {
   position: fixed;
+}
+.noWrap.data-v-7da806a4 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.w100.data-v-7da806a4 {
+  width: 100px;
+}
+.prepend.data-v-7da806a4 {
+  white-space: pre;
 }
 .uni-popup.data-v-7da806a4 {
   position: fixed;

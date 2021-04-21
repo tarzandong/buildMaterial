@@ -57,7 +57,7 @@
   border-bottom: 1px solid #532e1c;
 }
 .phc.data-v-1ec1e3f6 {
-  color: #9f5836;
+  color: #c6c6c6;
 }
 .button.data-v-1ec1e3f6 {
   background-color: #f6830f;
@@ -259,6 +259,16 @@
 }
 .pf.data-v-1ec1e3f6 {
   position: fixed;
+}
+.noWrap.data-v-1ec1e3f6 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.w100.data-v-1ec1e3f6 {
+  width: 100px;
+}
+.prepend.data-v-1ec1e3f6 {
+  white-space: pre;
 }
 .uni-steps.data-v-1ec1e3f6 {
   display: -webkit-box;

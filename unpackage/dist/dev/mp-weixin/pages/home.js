@@ -107,22 +107,22 @@ var components
 try {
   components = {
     mpframe: function() {
-      return __webpack_require__.e(/*! import() | components/mpframe/mpframe */ "components/mpframe/mpframe").then(__webpack_require__.bind(null, /*! @/components/mpframe/mpframe.vue */ 39))
+      return __webpack_require__.e(/*! import() | components/mpframe/mpframe */ "components/mpframe/mpframe").then(__webpack_require__.bind(null, /*! @/components/mpframe/mpframe.vue */ 47))
     },
     hall: function() {
-      return __webpack_require__.e(/*! import() | components/hall/hall */ "components/hall/hall").then(__webpack_require__.bind(null, /*! @/components/hall/hall.vue */ 46))
+      return __webpack_require__.e(/*! import() | components/hall/hall */ "components/hall/hall").then(__webpack_require__.bind(null, /*! @/components/hall/hall.vue */ 54))
     },
     shopCar: function() {
-      return __webpack_require__.e(/*! import() | components/shopCar/shopCar */ "components/shopCar/shopCar").then(__webpack_require__.bind(null, /*! @/components/shopCar/shopCar.vue */ 53))
+      return __webpack_require__.e(/*! import() | components/shopCar/shopCar */ "components/shopCar/shopCar").then(__webpack_require__.bind(null, /*! @/components/shopCar/shopCar.vue */ 61))
     },
     profile: function() {
-      return __webpack_require__.e(/*! import() | components/profile/profile */ "components/profile/profile").then(__webpack_require__.bind(null, /*! @/components/profile/profile.vue */ 60))
+      return __webpack_require__.e(/*! import() | components/profile/profile */ "components/profile/profile").then(__webpack_require__.bind(null, /*! @/components/profile/profile.vue */ 68))
     },
     tabbar: function() {
-      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 67))
+      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 75))
     },
     uniPopup: function() {
-      return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 74))
+      return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 82))
     }
   }
 } catch (e) {
@@ -190,7 +190,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var uniPopupMessage = function uniPopupMessage() {__webpack_require__.e(/*! require.ensure | components/uni-popup/uni-popup-message */ "components/uni-popup/uni-popup-message").then((function () {return resolve(__webpack_require__(/*! @/components/uni-popup/uni-popup-message.vue */ 83));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}var uniPopupMessage = function uniPopupMessage() {__webpack_require__.e(/*! require.ensure | components/uni-popup/uni-popup-message */ "components/uni-popup/uni-popup-message").then((function () {return resolve(__webpack_require__(/*! @/components/uni-popup/uni-popup-message.vue */ 91));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -232,9 +232,11 @@ __webpack_require__.r(__webpack_exports__);
 
   data: function data() {
     return {
+      tabIcons: ['/static/images/home/home', '/static/images/home/shopCar', '/static/images/home/profile'],
       tabIndex: 0,
       tabList: ['首页', '购物车', '我的'],
       downloadUrl: '',
+      existPassword: false,
       urls: {
         updatedQuote: '/api/build/commodity/new/info',
         typeQuote: '/api/build/commodity/type/list',
@@ -243,16 +245,20 @@ __webpack_require__.r(__webpack_exports__);
 
       body: {
         "page": 1,
-        "pageSize": 10,
+        "pageSize": 18,
         "type": 2,
         "userId": this.$store.state.userInfo.userId,
         orderState: 0 },
 
       updatedList: [],
-      typeList: [] };
+      typeList: [],
+      brandList: [] };
 
   },
   computed: {
+    hasLogin: function hasLogin() {
+      return this.$store.state.hasLogin;
+    },
     bgSrc: function bgSrc() {
       return 'http://203.135.96.136:8850/images/bg/home' + this.bmTypeIndex + '.jpg';
     },
@@ -270,9 +276,9 @@ __webpack_require__.r(__webpack_exports__);
     },
 
     menuSrc: function menuSrc() {
-      // if (this.$store.state.platform=='wx') return ''
-      // else return '/static/images/common/menu.png'
-      return '';
+      if (this.$store.state.platform == 'wx') return '';else
+      return '/static/images/common/menu.png';
+      // return ''
     }
     // lang(){
     // 	return this.$store.getters.lang
@@ -282,7 +288,31 @@ __webpack_require__.r(__webpack_exports__);
     // }
   },
   methods: {
-    updateOrder: function updateOrder() {var _this = this;
+    updateProfile: function updateProfile() {var _this = this;
+      this.$request('/api/build/user/existPassword', {}).then(function (data) {
+        _this.existPassword = !Boolean(data.existPassword);
+        console.log('exits', _this.existPassword);
+      });
+    },
+    share: function share() {
+      // try{
+      // uni.shareWithSystem({
+      //   summary: '中山建材',
+      //   href: this.$store.state.downloadUrl,
+      //   success(){
+      //     // 分享完成，请注意此时不一定是成功分享
+      //   },
+      //   fail(){
+      //     // 分享失败
+      //   }
+      // })
+      // }
+      // catch(e){}
+      uni.navigateTo({
+        url: 'share/share' });
+
+    },
+    updateOrder: function updateOrder() {var _this2 = this;
       this.$request('/api/build/order/list', { userId: this.$store.state.userInfo.userId, orderState: 0 }).then(function (data) {
         data.orderTasks.map(function (item) {
           item.orderTasks.map(function (item) {
@@ -290,41 +320,58 @@ __webpack_require__.r(__webpack_exports__);
             return item;
           });
         });
-        _this.$store.commit('setLIC', data.orderTasks);
+        _this2.$store.commit('setLIC', data.orderTasks);
         // this.$forceUpdate()
       });
       this.$request('/api/build/order/all/list', { userId: this.$store.state.userInfo.userId }).then(function (data) {
-        _this.$store.commit('setLIO', data.orderTasks);
+        _this2.$store.commit('setLIO', data.orderTasks);
       });
     },
-    changeType: function changeType(i) {var _this2 = this;
+    changeType: function changeType(i) {var _this3 = this;
       this.body.type = i;
       this.$request(this.urls.typeQuote, this.body).then(function (data) {
-        _this2.typeList = data.commodities.records;
+        _this3.typeList = data.commodities.records;
       });
     },
-    tabClick: function tabClick(i) {var _this3 = this;
+    changeBrand: function changeBrand(i) {var _this4 = this;
+      this.body.page = 1;
+      this.body.brandId = this.$store.state.brandList[i].id;
+      console.log(this.body);
+      this.$request(this.urls.typeQuote, this.body).then(function (data) {
+        _this4.typeList = data.commodities.records;
+      });
+    },
+    loadMore: function loadMore() {var _this5 = this;
+      console.log('load');
+      this.body.page++;
+      this.$request(this.urls.typeQuote, this.body).then(function (data) {var _this5$typeList;
+        (_this5$typeList = _this5.typeList).push.apply(_this5$typeList, _toConsumableArray(data.commodities.records));
+      });
+    },
+    tabClick: function tabClick(i) {
       this.tabIndex = i;
-      if (i == 0) {
-        this.$request('/api/build/commodity/new/info', this.body).then(function (data) {
-          _this3.updatedList = data.commodities;
-        });
-        this.$request('/api/build/commodity/type/list', this.body).then(function (data) {
-          _this3.typeList = data.commodities.records;
-        });
-      }
+      // if (i==0){
+      // 	this.$request('/api/build/commodity/new/info',this.body).then((data)=>{
+      // 		this.updatedList=data.commodities
+      // 		this.updatedList.length=4
+      // 	})
+      // 	this.$request('/api/build/commodity/type/list',this.body).then((data)=>{
+      // 		this.typeList=data.commodities.records
+      // 	})
+      // }
 
     },
-    switchTab: function switchTab(e) {var _this4 = this;
+    switchTab: function switchTab(e) {
       this.tabIndex = e.detail.current;
-      if (e.detail.current == 0) {
-        this.$request('/api/build/commodity/new/info', this.body).then(function (data) {
-          _this4.updatedList = data.commodities;
-        });
-        this.$request('/api/build/commodity/type/list', this.body).then(function (data) {
-          _this4.typeList = data.commodities.records;
-        });
-      }
+      // if (e.detail.current==0) {
+      // 	this.$request('/api/build/commodity/new/info',this.body).then((data)=>{
+      // 		this.updatedList=data.commodities
+      // 		this.updatedList.length=4
+      // 	})
+      // 	this.$request('/api/build/commodity/type/list',this.body).then((data)=>{
+      // 		this.typeList=data.commodities.records
+      // 	})
+      // }
 
     },
     download: function download() {
@@ -400,47 +447,65 @@ __webpack_require__.r(__webpack_exports__);
     // 	return true
     // }
   },
-  onLoad: function onLoad() {var _this5 = this;
+  onShow: function onShow() {var _this6 = this;
+    if (this.hasLogin) {
+      this.updateOrder();
+      this.$request('/api/build/user/existPassword', {}).then(function (data) {
+        _this6.existPassword = !Boolean(data.existPassword);
+        console.log('exits', _this6.existPassword);
+      });
+    }
+
+  },
+  onLoad: function onLoad() {var _this7 = this;
+    this.$request('/api/build/commodity/new/info', this.body).then(function (data) {
+      _this7.updatedList = data.commodities;
+      _this7.updatedList.length = 4;
+    });
+    this.$request('/api/build/commodity/type/list', this.body).then(function (data) {
+      _this7.typeList = data.commodities.records;
+    });
+    this.$request(this.urls.typeList, {}).then(function (data) {
+      var tempList = [];
+      var tempItem = {};
+      data.categories.map(function (item) {
+        tempItem.value = item.id;
+        tempItem.lable = item.name;
+        tempItem.type = item.type;
+        tempList.push(_objectSpread({}, tempItem));
+      });
+      _this7.$store.commit('setCL', tempList);
+    });
+    this.$request('/api/build/commodity/brand/list', {}).then(function (data) {
+      data.subCategories.unshift({ subCategoryName: '所有', id: '' });
+      _this7.$store.commit('setBL', data.subCategories);
+    });
     uni.getStorage({
       key: 'userInfo',
       success: function success(res) {
-        _this5.$store.commit('login', JSON.parse(res.data));
+        _this7.$store.commit('login', JSON.parse(res.data));
         // console.log(this.$store.state.userInfo.token)
-        _this5.$request('/api/build/commodity/new/info', _this5.body).then(function (data) {
-          _this5.updatedList = data.commodities;
+        _this7.$request('/api/build/user/existPassword', {}).then(function (data) {
+          _this7.existPassword = !Boolean(data.existPassword);
+          console.log('exits', _this7.existPassword);
         });
-        _this5.$request('/api/build/commodity/type/list', _this5.body).then(function (data) {
-          _this5.typeList = data.commodities.records;
-        });
-        _this5.$request(_this5.urls.typeList, {}).then(function (data) {
-          var tempList = [];
-          var tempItem = {};
-          data.categories.map(function (item) {
-            tempItem.value = item.id;
-            tempItem.lable = item.name;
-            tempItem.type = item.type;
-            tempList.push(_objectSpread({}, tempItem));
-          });
-          _this5.$store.commit('setCL', tempList);
-        });
-
-        _this5.updateOrder();
+        _this7.updateOrder();
       },
       fail: function fail() {
-        uni.redirectTo({
-          url: 'rigist?status=0' });
-
+        // uni.redirectTo({
+        // 	url:'rigist?status=0'
+        // })
       } });
 
 
 
   },
-  mounted: function mounted() {var _this6 = this;
+  mounted: function mounted() {var _this8 = this;
     this.$request('/api/build/user/version/detail', { 'version': 100 }).
     then(function (data) {
-      _this6.$store.state.downloadUrl = data.downloadAddress;
-      _this6.$store.state.downloadIos = data.iosDownloadAddress;
-      _this6.downloadUrl = data.downloadAddress;
+      _this8.$store.state.downloadUrl = data.downloadAddress;
+      _this8.$store.state.downloadIos = data.iosDownloadAddress;
+      _this8.downloadUrl = data.downloadAddress;
     });
     try {
       var v = plus.runtime.version;
@@ -448,10 +513,10 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$request('/api/build/user/version/detail', { 'version': vi }).
       then(function (data) {
-        _this6.downloadUrl = data.downloadAddress;
+        _this8.downloadUrl = data.downloadAddress;
         if (data.state) {
 
-          _this6.$refs.download.open();
+          _this8.$refs.download.open();
         }
       });
     } catch (e) {

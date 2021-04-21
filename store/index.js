@@ -21,8 +21,8 @@ const store = new Vuex.Store({
 			
 			
 			warnMessage:'',
-			showWarn:null,
 			popupShow:false,
+			popref:null,
 			
 			categoryList:[],
 			brandList:[],
@@ -92,9 +92,6 @@ const store = new Vuex.Store({
 			setST(state,st){
 				state.safeTop=st
 			},
-			getWarnFun(state,fun){
-				state.showWarn=fun
-			},
 			setWarn(state,m){
 				state.warnMessage=m
 			},
@@ -122,8 +119,10 @@ const store = new Vuex.Store({
 			warn(context,message){
 				let d=3000
 				context.commit('setWarn',message)
-				setTimeout(context.state.showWarn,200)
-				// context.state.showWarn()
+				context.state.popref.open()
+				setTimeout(()=>{
+					context.commit('setWarn','')
+				},3000)
 				
 			},
 			

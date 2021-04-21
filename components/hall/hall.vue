@@ -11,26 +11,31 @@
 			
 		</swiper>
 		<!-- <image src="http://203.135.96.136:8850/images/home/lunbo.jpg" style='width: 100%;height: 210px;' @click='test'></image> -->
-		<view class="bgQuote1">
-			<view class="centerTitle pt" >最新报价</view>
-			<view class="row mt tableHead">
-				<view class='f1'>名称</view>
-				<view class='f1'>单位</view>
-				<view class='f1'>报价</view>
+		<view class="bgQuote1" style="overflow: scroll;">
+			<view class="centerTitle pt pl" style="text-align: start;">最新报价</view>
+			<view class='row tableHead mt pl' >
+				<view class='f1' >{{tableHead[0]}}</view>
+				<view class='f2' >{{tableHead[1]}}</view>
+				<view class='f2' >{{tableHead[2]}}</view>
+				<view class='f1' >{{tableHead[3]}}</view>
+				<view class='f1' >{{tableHead[4]}}</view>
+				<view class='f2' >{{tableHead[5]}}</view>
 			</view>
-			<view class="line"></view>
-			<view :class="'row lh22 tableLine '+(index%2!==0? 'strip':'')" v-for="(item,index) in updateList" :key='index' @click="openDetail(item)" >
-				<!-- :style="index%2==0? 'background-color:#1e212d;':''" -->
-				<view class='f1'>{{item.name}}</view>
-				<view class='f1'>{{item.unit}}</view>
-				<view class='f1'>{{item.getPrice}}</view>
+			<view class='line'></view>
+			<view :class="'row lh28 tableLine pl'" v-for="(item,index) in updateList" :key="index" @click="openDetail(item)" >
+				<view class='f1 fs12 noWrap'>{{item.brandName}}</view>
+				<view class='f2 fs12 noWrap'>{{item.name}}</view>
+				<view class='f2 fs12 noWrap'>{{item.norms}}</view>
+				<view class='f1 fs12 noWrap'>{{item.stock}}</view>
+				<view class='f1 fs12 noWrap'>{{item.unit}}</view>
+				<view class='f2 fs12 noWrap'>{{item.price}}</view>
 			</view>
 		</view>
 		<!-- <tabbar :tabList="bmTypes" :index="bmTypeIndex" @tabIndex='typeClick' class="typeTab mt"></tabbar> -->
-		<view class="mt mb row" style="width: 100%; justify-content: space-around;background-color: #e6e6e6;">
+		<view class=" mb row pl pr" style="width: 100%; justify-content: space-between;border-top: 2px solid #532e1c;">
 			<view class="fs20 fwb">钢材</view>
 			<radio-group @change="setLayout" >
-				<view class="row" style="justify-content: space-around;font-size: 14px;">
+				<view class=" pr" style="justify-content: space-around;font-size: 14px;">
 					<label class="pl pr" style="line-height: 30px;border-radius: 15px;">
 						<radio value="0" checked="layout==0" style="transform:scale(0.7);" color="#e48257"></radio>
 						紧凑模式
@@ -45,19 +50,24 @@
 		</view>
 		<wrapTab :tabList="brandList" :curIndex='tabIndex' @tabClick='tabClick'></wrapTab>
 		
-		<scroll-view scroll-y="true" :style=" 'height:'+String(parseInt($store.getters.mpMainHeight)-84)+'px;border-top:2px solid #532e1c' " @scrolltolower="()=>{$emit('loadMore')}">
+		<scroll-view scroll-y="true" :style=" 'height:'+String(parseInt($store.getters.mpMainHeight)-84)+'px;' " @scrolltolower="()=>{$emit('loadMore')}">
 			<view v-if="layout==0" class="table">
-				<view class='row pt tableHead mt' >
-					<view class='f1' v-for="(item,index) in tableHead" :key="index">{{item}}</view>
+				<view class='row tableHead mt pl' >
+					<view class='f1' >{{tableHead[0]}}</view>
+					<view class='f2' >{{tableHead[1]}}</view>
+					<view class='f2' >{{tableHead[2]}}</view>
+					<view class='f1' >{{tableHead[3]}}</view>
+					<view class='f1' >{{tableHead[4]}}</view>
+					<view class='f2' >{{tableHead[5]}}</view>
 				</view>
 				<view class='line'></view>
-				<view :class="'row lh28 tableLine '+(index%2!==0? 'strip':'')" v-for="(item,index) in quoteList" :key="index" @click="openDetail(item)" >
+				<view :class="'row lh28 tableLine pl'" v-for="(item,index) in quoteList" :key="index" @click="openDetail(item)" >
 					<view class='f1 fs12 noWrap'>{{item.brandName}}</view>
-					<view class='f1 fs12 noWrap'>{{item.name}}</view>
-					<view class='f1 fs12 noWrap'>{{item.norms}}</view>
-					<view class='f1'>{{item.stock}}</view>
-					<view class='f1'>{{item.unit}}</view>
-					<view class='f1'>{{item.getPrice}}</view>
+					<view class='f2 fs12 noWrap'>{{item.name}}</view>
+					<view class='f2 fs12 noWrap'>{{item.norms}}</view>
+					<view class='f1 fs12 noWrap'>{{item.stock}}</view>
+					<view class='f1 fs12 noWrap'>{{item.unit}}</view>
+					<view class='f2 fs12 noWrap'>{{item.price}}</view>
 				</view>
 			</view>
 			<view v-else class="row2">
@@ -65,7 +75,7 @@
 					<view class="square">
 						<view class='type lh22 noWrap'>{{item.name+' '+item.norms}}</view>
 						<view class='type lh22'>{{item.stock+item.unit}}</view>
-						<view class='price lh22'>{{item.getPrice}}/{{item.unit}}</view>
+						<view class='price lh22'>{{item.price}}/{{item.unit}}</view>
 						<view class='brand lh22 noWrap'>来自{{item.brandName}}</view>
 					</view>
 				</view>
@@ -87,7 +97,7 @@
 				layout:1,
 				// brandList:['重钢123','宝钢','鞍钢','珠海粤钢','重钢','宝钢','鞍钢','珠海粤钢','重钢','珠海粤钢','重钢'],
 				tabIndex:0,
-				tableHead:['品牌','品名','规格','数量','单位','单价'],
+				tableHead:['品牌','名称','规格','数量','单位','单价(元)'],
 			}
 				
 		},
@@ -143,12 +153,12 @@
 		color: $text-color;
 	}
 	.bgQuote1{
-		background-color: $bg-active;
+		// background-color: $bg-active;
 		backdrop-filter: blur(2px);
-		height: 200px;
+		height: 220px;
 	}
 	.table{
-		background-color: $bg-active;
+		// background-color: $bg-active;
 		backdrop-filter: blur(5px);
 	}
 	.row2{
@@ -156,7 +166,7 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: center;
+		justify-content: start;
 		font-weight: lighter;
 	}
 	.square{
@@ -166,7 +176,8 @@
 		width: 100px;
 		height: 100px;
 		border-radius: 5px;
-		background-color: $bg-active;
+		// background-color: $bg-active;
+		border: 1px solid $bg-active;
 		margin: 5px;
 		padding: 5px;
 		backdrop-filter: blur(5px);
@@ -177,12 +188,12 @@
 	.type{
 		width: 100%;
 		text-align: center;
-		font-size: 14px;
+		font-size: 12px;
 	}
 	.price{
 		width:100%;
 		text-align: center;
-		font-size: 18px;
+		font-size: 16px;
 		color: darken($text-color,20%);
 		font-weight: bold;
 	}
@@ -193,6 +204,7 @@
 	}
 	.tableLine{
 		height: 35px;
+		border-bottom: 0.5px solid #e6e6e6;
 	}
 	.tableLine:active{
 		background-color: $color-warning;

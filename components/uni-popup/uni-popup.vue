@@ -1,5 +1,5 @@
 <template>
-	<view v-if="showPopup" class="uni-popup" :class="[popupstyle]" @touchmove.stop.prevent="clear">
+	<view v-if="showPopup"  class="uni-popup" :class="[popupstyle]" @touchmove.stop.prevent="clear">
 		<uni-transition v-if="maskShow" :mode-class="['fade']" :styles="maskClass" :duration="duration" :show="showTrans"
 		 @click="onTap" />
 		<uni-transition :mode-class="ani" :styles="transClass" :duration="duration" :show="showTrans" @click="onTap">
@@ -54,7 +54,7 @@
 			bottomPos:{
 				type:Number,
 				default:0
-			}
+			},
 		},
 		provide() {
 			return {
@@ -98,6 +98,7 @@
 					'position': 'fixed',
 					'left': 0,
 					'right': 0,
+					
 				},
 				maskShow: true,
 				mkclick: true,
@@ -146,6 +147,7 @@
 				})
 			},
 			close(type) {
+				console.log('close')
 				this.showTrans = false
 				this.$nextTick(() => {
 					this.$emit('change', {

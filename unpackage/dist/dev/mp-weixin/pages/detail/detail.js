@@ -96,7 +96,10 @@ var components
 try {
   components = {
     mpframe: function() {
-      return __webpack_require__.e(/*! import() | components/mpframe/mpframe */ "components/mpframe/mpframe").then(__webpack_require__.bind(null, /*! @/components/mpframe/mpframe.vue */ 39))
+      return __webpack_require__.e(/*! import() | components/mpframe/mpframe */ "components/mpframe/mpframe").then(__webpack_require__.bind(null, /*! @/components/mpframe/mpframe.vue */ 47))
+    },
+    uniPopup: function() {
+      return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 82))
     }
   }
 } catch (e) {
@@ -153,67 +156,74 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniPopupDialog = function uniPopupDialog() {__webpack_require__.e(/*! require.ensure | components/uni-popup/uni-popup-dialog */ "components/uni-popup/uni-popup-dialog").then((function () {return resolve(__webpack_require__(/*! @/components/uni-popup/uni-popup-dialog.vue */ 98));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: {
+    uniPopupDialog: uniPopupDialog },
+
   data: function data() {
     return {
       item: null,
@@ -243,57 +253,78 @@ var _default =
       });
     },
     addToCar: function addToCar() {var _this2 = this;
-      if (this.orderQty > 0) {
-        console.log(this.item);
-        var body = {
-          amount: this.orderQty * this.item.getPrice,
-          number: this.orderQty,
-          price: this.item.getPrice,
-          remark: '',
-          userId: this.$store.state.userInfo.userId,
-          commodityId: this.item.id };
+      if (!this.$store.state.hasLogin) {
+        this.$store.dispatch('warn', '请先登录');
+        setTimeout(function () {
+          uni.navigateTo({
+            url: '../rigist?status=1' });
 
-        body.orderState = 0,
-
-        this.$request('/api/build/order/add', body).then(function (data) {
-          _this2.updateOrder();
-          _this2.$store.dispatch('warn', "已添加至购物车，可在'购物车'页面查看");
-          uni.navigateBack();
-        });
-
+        }, 3000);
       } else
-      this.$store.dispatch('warn', '请输入合适数量');
-    },
-    showOrder: function showOrder() {var _this3 = this;
-      uni.showModal({
-        title: '确认下单？',
-        showCancel: true,
-        success: function success(e) {
-          if (e.confirm) _this3.order();
-        } });
+      {
+        if (this.orderQty > 0) {
+          console.log(this.item);
+          var body = {
+            amount: this.orderQty * this.item.getPrice,
+            number: this.orderQty,
+            price: this.item.getPrice,
+            remark: '',
+            userId: this.$store.state.userInfo.userId,
+            commodityId: this.item.id };
+
+          body.orderState = 0,
+
+          this.$request('/api/build/order/add', body).then(function (data) {
+            _this2.updateOrder();
+            _this2.$store.dispatch('warn', "已添加至购物车，可在'购物车'页面查看");
+            uni.navigateBack();
+          });
+
+        } else
+        this.$store.dispatch('warn', '请输入合适数量');
+      }
 
     },
-    order: function order() {var _this4 = this;
-      if (this.orderQty > 0) {
-        var body = {
-          amount: this.orderQty * this.item.getPrice,
-          number: this.orderQty,
-          price: this.item.getPrice,
-          remark: '',
-          userId: this.$store.state.userInfo.userId,
-          commodityId: this.item.id };
+    showOrder: function showOrder() {
+      // uni.showModal({
+      // 	title:'确认下单？',
+      // 	showCancel:true,
+      // 	success: (e) => {
+      // 		if (e.confirm) this.order()
+      // 	}
+      // })
+      if (!this.$store.state.hasLogin) {
+        this.$store.dispatch('warn', '请先登录');
+        setTimeout(function () {
+          uni.navigateTo({
+            url: '../rigist?status=1' });
 
-        body.orderState = 1,
-
-        this.$request('/api/build/order/add', body).then(function (data) {
-          _this4.updateOrder();
-          _this4.$store.dispatch('warn', "已下单，可在'我的'页面查看");
-          uni.navigateBack();
-        });
-
-
+        }, 3000);
       } else
-      this.$store.dispatch('warn', '请输入合适数量');
+      {
+        if (this.orderQty > 0) {
+
+          this.$refs.dialog.open();
+        } else
+        this.$store.dispatch('warn', '请输入合适数量');
+      }
+    },
+    confirm: function confirm(done) {var _this3 = this;
+      var body = {
+        amount: this.orderQty * this.item.getPrice,
+        number: this.orderQty,
+        price: this.item.getPrice,
+        remark: '',
+        userId: this.$store.state.userInfo.userId,
+        commodityId: this.item.id };
+
+      body.orderState = 1,
+      this.$request('/api/build/order/add', body).then(function (data) {
+        _this3.updateOrder();
+        _this3.$store.dispatch('warn', "已下单，可在'我的'页面查看");
+        done();
+        uni.navigateBack();
+      }).fail(function () {done();});
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

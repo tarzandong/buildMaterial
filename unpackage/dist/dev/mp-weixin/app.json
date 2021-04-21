@@ -2,12 +2,13 @@
   "pages": [
     "pages/home",
     "pages/rigist",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/share/share"
   ],
   "subPackages": [],
   "window": {
     "navigationStyle": "custom"
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap68.json"
+  "sitemapLocation": "sitemap28.json"
 }

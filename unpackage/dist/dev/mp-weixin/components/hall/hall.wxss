@@ -57,7 +57,7 @@
   border-bottom: 1px solid #532e1c;
 }
 .phc {
-  color: #9f5836;
+  color: #c6c6c6;
 }
 .button {
   background-color: #f6830f;
@@ -260,6 +260,16 @@
 .pf {
   position: fixed;
 }
+.noWrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.w100 {
+  width: 100px;
+}
+.prepend {
+  white-space: pre;
+}
 .hall {
   color: #532e1c;
 }
@@ -267,7 +277,7 @@
   background-color: rgba(238, 238, 238, 0.5);
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
-  height: 200px;
+  height: 220px;
 }
 .table {
   background-color: rgba(238, 238, 238, 0.5);
@@ -311,6 +321,9 @@
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
 }
+.square:active {
+  background-color: #f6830f;
+}
 .type {
   width: 100%;
   text-align: center;
@@ -327,5 +340,11 @@
   width: 100%;
   text-align: end;
   font-size: 12px;
+}
+.tableLine {
+  height: 35px;
+}
+.tableLine:active {
+  background-color: #f6830f;
 }
 

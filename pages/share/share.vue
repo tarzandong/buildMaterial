@@ -5,7 +5,7 @@
 				<view class="content" ref='mainContent'>
 					
 					
-						<view style="font-size: 12px;margin-top: 20px;">'请根据您的手机平台扫描相应二维码'</view>
+						<view style="font-size: 12px;margin-top: 20px;">请根据您的手机平台扫描相应二维码</view>
 						<view class="glass content" style="margin-top: 20px;">
 							
 							<view style="width: 100%;text-align: center;">安卓 Anodroid</view>
@@ -21,7 +21,7 @@
 							
 						</view>	
 						
-						<view class="glass">
+						<!-- <view class="glass">
 							<view style="width: 100%;text-align: center;">苹果 IOS</view>
 							<view style='margin-top: 10px;padding-left: 20px;'>
 								<ay-qrcode ref="ios1" :qrcode_id="'ios1'" :modal="modal_qr" :url="url1" @hideQrcode="hideQrcode" :height="200" :width="200" 
@@ -29,11 +29,10 @@
 								themeImg="/static/logo.png"
 								:h_w_img="40"/>
 							</view>
-						</view>
+						</view> -->
 						
-						<view class='button mt' @click='shot'>截屏</view>
-						<view class='button mt' @click='share'>分享</view>
-						<view class='fs12'>限安卓app</view>
+						<view class='button mt' @click='shot' style="white-space: pre;">截    屏</view>
+						<view class='button mt' @click='share' style="white-space: pre;">分    享</view>
 					
 				</view>	
 			</view>//slotmain

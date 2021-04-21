@@ -4,12 +4,12 @@
 	<view class="tab">
 		<view class="tabWrap">
 			
-		  <view v-for="(item,i1) in tabList"  @click='itemClick(i1)' :key='i1' :class="index==i1? 'active':'notactive'">
-				<image :src="index==i1? iconSrc[i1]+'.png':iconSrc[i1]+'1.png'" class='tabicon' v-if="iconSrc.length>0"></image>
+		  <view v-for="(item,i1) in tabList"  @click='itemClick(i1)' :key='i1' :class="index==i1? 'active':'notactive'" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+				<image :src="index==i1? iconSrc[i1]+'1.png':iconSrc[i1]+'.png'" class='tabicon' v-if="iconSrc.length>0"></image>
 		    <view class="itemtxt">{{item}}</view>
 				
 		  </view>
-		  <view class="bedge" v-if='lengthOfCar' style="position: absolute;	top:10px;	left:55%;">{{lengthOfCar}}</view>
+		  <view class="bedge" v-if='lengthOfCar' style="position: absolute;	top:3px;	left:52%;">{{lengthOfCar}}</view>
 			
 		</view>
 	</view>
@@ -55,8 +55,6 @@
 			// midclick(){this.$store.commit('setTBC',1)},
 			itemClick(i){
 				// this.index=i
-				console.log('click')
-				console.log(this.$store.state.fullHeight,this.$store.getters.mpMainHeight,this.$store.state.safeTop)
 				this.$emit('tabIndex',i)
 			}
 		},
@@ -84,7 +82,6 @@
 	.tabicon{
 		width: 24px;
 		height: 24px;
-		margin-top: 2px;
 	}
 	.title{
 		transform: translateY(35px) ;
@@ -93,7 +90,7 @@
 	}
 	
 	.itemtxt{
-		line-height: 24px;
+		line-height: 18px;
 	}
 	.tabWrap{
 		width: 100%;
@@ -101,8 +98,9 @@
 		flex-direction: row;
 		height: 50px;
 		text-align: center;
-		background-image: linear-gradient(to bottom right,$bg-color,darken($bg-color,20%));
-		backdrop-filter: blur(5px);
+		// background-image: linear-gradient(to bottom right,$bg-color,darken($bg-color,20%));
+		// backdrop-filter: blur(5px);
+		border-top: 1px solid #e6e6e6;
 	}
 	
 	.tabItem{
@@ -111,16 +109,17 @@
 	.active {
 		flex: 1;
 	  // color: $text-color-inverse;
-		color:$text-color;
-		box-shadow: 1px 0 1px #000, -1px 0 1px #fff;
-		font-size: 12px;
+		color:$color-warning;
+		// box-shadow: 1px 0 1px #000, -1px 0 1px #fff;
+		font-size: 10px;
 		font-weight: bold;
 		// text-shadow: 1px 1px 1px $color-primary;
 		transition: color 0.5s;
 	}
 	.notactive {
-		font-size: 12px;
+		font-size: 10px;
 		flex:1;
-		color: $text-color-grey;
+		color: #2c2c2c;
+		font-weight: lighter;
 	}
 </style>

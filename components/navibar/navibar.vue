@@ -20,8 +20,9 @@
 		height: 45px;
 		// background-color: $color-success;
 		color: $text-color;
-		background-image: linear-gradient(to top left,$bg-active,darken($bg-active,20%));
-		backdrop-filter: blur(5px);
+		// background-image: linear-gradient(to top left,$bg-active,darken($bg-active,20%));
+		border-bottom: 1px solid #e6e6e6;
+		// backdrop-filter: blur(5px);
 	}
 	.navlead{
 		display: flex;

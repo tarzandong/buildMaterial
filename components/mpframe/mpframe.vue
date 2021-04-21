@@ -25,11 +25,11 @@
 		    <uni-popup-message type="warn" :message="message" :duration="d"></uni-popup-message>
 				<!-- <view style="z-index: 100;">{{$store.state.warnMessage}}</view> -->
 		</uni-popup>
-		<view class="main" :style="bottomTab? 'height:'+String($store.getters.mpMainHeight)+'px;':'' ">
+		<view class="main" :style="bottomTab? 'height:'+String($store.getters.mpMainHeight)+'px;':'' " >
 			<slot name="main" ></slot>
 		</view>
 		<loading></loading>
-		<view v-if='notLogin' style="width: 100%;background-color: #555555;position: fixed;bottom: 60px;display: flex;flex-direction: row-reverse;">
+		<view v-if='notLogin' style="width: 100%;background-color: #808080;position: fixed;bottom: 60px;display: flex;flex-direction: row-reverse;">
 			<view class="button mr" style="width: 60px;" @click="toRigist">立即登录</view>
 		</view>
 	</view>	
@@ -37,10 +37,9 @@
 
 <script>
 	import uniPopupMessage from '@/components/uni-popup/uni-popup-message.vue'
-	
 	export default{
 		components:{
-			uniPopupMessage
+			uniPopupMessage,
 		},
 		data(){
 			return {
@@ -83,20 +82,27 @@
 				}
 				uni.navigateBack()
 			},
-			showmessage(){
-				
-				this.$refs.popup.open()
-				setTimeout(()=>{
-					this.$store.commit('setWarn','')
-				},this.d)
-			}
+			
+			
 		},
 		updated() {
-			this.$store.commit('getWarnFun',this.showmessage)
+			// uni.$on('pop',()=>{
+			// 	if (this.$refs.popup){
+			// 		console.log('mpshow')
+			// 		this.$store.state.popref=this.$refs.popup
+			// 		this.$emit('pop')
+			// 	}
+				
+			// })
 		},
 		mounted() {
-			// console.log(this.$store.state.warnMessage)
-			this.$store.commit('getWarnFun',this.showmessage)
+			this.$store.state.popref=this.$refs.popup
+			if (this.$store.state.warnMessage !=='') {
+				this.$refs.popup.open()
+				setTimeout(()=>{
+					this.$store.state.warnMessage=''
+				},this.d)
+			}
 		}
 	}
 </script>
@@ -115,7 +121,7 @@
 		display: block;
 		position: fixed;
 		top:0;
-		background-color: $bg-color;
+		// background-color: $bg-color;
 		z-index: 10;
 		// background-color: $color-success;
 	}
@@ -145,6 +151,6 @@
 		top: 0;
 		left: 0;
 		// background-image: linear-gradient(to bottom right,darken($bg-color,20%),#fff,darken($bg-color,20%));
-		background-color: #f8f8f8;
+		// background-color: #f8f8f8;
 	}
 </style>

@@ -57,7 +57,7 @@
   border-bottom: 1px solid #532e1c;
 }
 .phc {
-  color: #9f5836;
+  color: #c6c6c6;
 }
 .button {
   background-color: #f6830f;
@@ -260,7 +260,25 @@
 .pf {
   position: fixed;
 }
+.noWrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.w100 {
+  width: 100px;
+}
+.prepend {
+  white-space: pre;
+}
 .profile {
   color: #532e1c;
+}
+.up {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+.down {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 

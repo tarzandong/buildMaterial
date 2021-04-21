@@ -57,7 +57,7 @@
   border-bottom: 1px solid #532e1c;
 }
 .phc {
-  color: #9f5836;
+  color: #c6c6c6;
 }
 .button {
   background-color: #f6830f;
@@ -260,6 +260,16 @@
 .pf {
   position: fixed;
 }
+.noWrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.w100 {
+  width: 100px;
+}
+.prepend {
+  white-space: pre;
+}
 .floattab {
   width: 80px;
   height: 70px;
@@ -283,7 +293,7 @@
   white-space: nowrap;
 }
 .itemtxt {
-  line-height: 50px;
+  line-height: 18px;
 }
 .tabWrap {
   width: 100%;
@@ -314,12 +324,13 @@
   color: #532e1c;
   -webkit-box-shadow: 1px 0 1px #000, -1px 0 1px #fff;
           box-shadow: 1px 0 1px #000, -1px 0 1px #fff;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: bold;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
 }
 .notactive {
+  font-size: 12px;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;

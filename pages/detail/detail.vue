@@ -10,7 +10,7 @@
 						来自{{item.brandName}}的{{item.categoryName}} {{item.norms}}
 					</view>
 					<view class="mt row" style='justify-content: center;'>
-						单价 <text class="fs20 pl hc fwb"> {{item.getPrice}}</text>元/{{item.unit}}
+						单价 <text class="fs20 pl hc fwb"> {{item.price}}</text>元/{{item.unit}}
 					</view>
 				</view>
 					
@@ -24,7 +24,7 @@
 					</view>
 					<view class="mt row pb" style="flex-direction: row-reverse;">
 						<view class="pr">
-							总价<text class="fs20 pl hc fwb">{{item.getPrice*orderQty}}</text>元
+							总价<text class="fs20 pl hc fwb">{{item.price*orderQty}}</text>元
 						</view>
 					</view>
 				</view>
@@ -54,11 +54,18 @@
 				
 			</view>
 		</mpframe>
+		<uni-popup ref='dialog' type="dialog">
+			<uni-popup-dialog type="info" title="确认下单？" @confirm="confirm"></uni-popup-dialog>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
+	import uniPopupDialog from '@/components/uni-popup/uni-popup-dialog.vue'
 	export default{
+		components:{
+			uniPopupDialog
+		},
 		data(){
 			return {
 				item:null,
@@ -81,11 +88,13 @@
 						})
 					})
 					this.$store.commit('setLIC',data.orderTasks)
-					// this.$forceUpdate()
+					this.$request('/api/build/order/all/list',{userId:this.$store.state.userInfo.userId}).then((data)=>{
+						this.$store.commit('setLIO',data.orderTasks)
+						
+						uni.navigateBack()
+					})
 				})
-				this.$request('/api/build/order/all/list',{userId:this.$store.state.userInfo.userId}).then((data)=>{
-					this.$store.commit('setLIO',data.orderTasks)
-				})
+				
 			},
 			addToCar(){
 				if (!this.$store.state.hasLogin) {
@@ -100,9 +109,9 @@
 					if(this.orderQty>0){
 						console.log(this.item)
 						let body={
-							amount:this.orderQty*this.item.getPrice,
+							amount:this.orderQty*this.item.price,
 							number:this.orderQty,
-							price:this.item.getPrice,
+							price:this.item.price,
 							remark:'',
 							userId: this.$store.state.userInfo.userId,
 							commodityId:this.item.id,
@@ -110,9 +119,8 @@
 						body.orderState=0,
 							
 						this.$request('/api/build/order/add',body).then((data)=>{
+							this.$store.commit('setWarn',"已添加至购物车，可在'购物车'页面查看")
 							this.updateOrder()
-							this.$store.dispatch('warn',"已添加至购物车，可在'购物车'页面查看")
-							uni.navigateBack()
 						})
 						
 					}
@@ -121,15 +129,13 @@
 				
 			},
 			showOrder(){
-				uni.showModal({
-					title:'确认下单？',
-					showCancel:true,
-					success: (e) => {
-						if (e.confirm) this.order()
-					}
-				})
-			},
-			order(){
+				// uni.showModal({
+				// 	title:'确认下单？',
+				// 	showCancel:true,
+				// 	success: (e) => {
+				// 		if (e.confirm) this.order()
+				// 	}
+				// })
 				if (!this.$store.state.hasLogin) {
 					this.$store.dispatch('warn','请先登录')
 					setTimeout(()=>{
@@ -140,27 +146,28 @@
 				}
 				else {
 					if (this.orderQty>0){
-						let body={
-							amount:this.orderQty*this.item.getPrice,
-							number:this.orderQty,
-							price:this.item.getPrice,
-							remark:'',
-							userId: this.$store.state.userInfo.userId,
-							commodityId:this.item.id,
-						}
-						body.orderState=1,
-							
-						this.$request('/api/build/order/add',body).then((data)=>{
-							this.updateOrder()
-							this.$store.dispatch('warn',"已下单，可在'我的'页面查看")
-							uni.navigateBack()
-						})
 						
-						
+						this.$refs.dialog.open()
 					}
 					else this.$store.dispatch('warn','请输入合适数量')
 				}
-				
+			},
+			confirm(done){
+				let body={
+					amount:this.orderQty*this.item.price,
+					number:this.orderQty,
+					price:this.item.price,
+					remark:'',
+					userId: this.$store.state.userInfo.userId,
+					commodityId:this.item.id,
+				}
+				body.orderState=1,
+				this.$request('/api/build/order/add',body).then((data)=>{
+					this.$store.commit('setWarn',"已下单，可在'我的'页面查看")
+					this.updateOrder()
+					done()
+				}).catch(()=>{done()})
+				done()
 			}
 		}
 	}
@@ -179,7 +186,7 @@
 	.imgp{
 		width: 300px;
 		height: 200px;
-		background-image: url('/static/images/temp/333.jpg');
+		background-image: url('/static/images/temp/33.jpg');
 		background-repeat: no-repeat;
 		background-size: cover;
 	}

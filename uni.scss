@@ -179,10 +179,25 @@ $font-size-paragraph:30rpx;
 		font-weight: lighter;
 		// justify-content: space-around;
 	}
+	
+.column1{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.icon64{
+	width: 64px;
+	height: 64px;
+}
 .f1{
 	flex:1;
-	text-align: center;
+	// text-align: center;
 }	
+.f2{
+	flex:2
+}
 .line{
 	border-bottom: 1px solid;
 	border-color: $text-color;
@@ -258,7 +273,7 @@ $font-size-paragraph:30rpx;
 }
 .tableHead{
 	color: $color-subtitle;
-	font-size: 18px;
+	font-size: 14px;
 }
 .strip{
 	background-color: darken($bg-active,20%);
@@ -317,9 +332,10 @@ $font-size-paragraph:30rpx;
 
 .buttonDelete{
 	
-	background: linear-gradient(145deg, #e14815, #bd3c12);
+	// background: linear-gradient(145deg, #e17024, #bd3c12);
+	background-color: #f24d17;
 	// box-shadow:  2px 2px 4px #b33911,-2px -2px 4px #f24d17;
-	box-shadow: 0 0 4px #b33911,0 0 4px #f24d17;
+	// box-shadow: 0 0 4px #f24d17;
 }
 
 .buttonDelete:active{
@@ -345,6 +361,7 @@ $font-size-paragraph:30rpx;
 
 .noWrap{
 	white-space: nowrap;
+	overflow: hidden;
 	text-overflow: ellipsis;
 }
 

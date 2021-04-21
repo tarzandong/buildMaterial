@@ -1,17 +1,16 @@
 <template>
 	<view style="display: block;width: 100%;height: 100%;">
-		<mpframe navL='-1' navC='建材中心' :src="bg12" :bottomTab="true" :navRsrc="menuSrc" @menuClick='share'>
-			
+		<mpframe navL='-1' navC='建材中心' :src="bg12" :bottomTab="true" :navRsrc="menuSrc" @menuClick='share'  :key='mpKey'>
 			<view slot='main' >
 				<swiper @change="switchTab" :current="tabIndex" :style="tabIndex==0? 'height:'+( parseInt($store.getters.mpMainHeight)+280)+'px;overflow: scroll;' : 'height:'+parseInt($store.getters.mpMainHeight)+'px;overflow: scroll;'">
 					<swiper-item>
 						<hall :updateList="updatedList" :quoteList="typeList" @changeType='changeType' @changeBrand='changeBrand' @loadMore='loadMore'></hall>
 					</swiper-item>
 					<swiper-item style="overflow: scroll;">
-						<shopCar ></shopCar>
+						<shopCar @updated='setUpdate'></shopCar>
 					</swiper-item>
 					<swiper-item style="overflow: scroll;">
-						<profile :existPassword="existPassword" @updated='updateProfile'></profile>
+						<profile :existPassword="existPassword" @updated='updateProfile' @queryOrder='queryOrder'></profile>
 					</swiper-item>
 				</swiper>
 				
@@ -53,14 +52,19 @@
 				},
 				body:{
 					"page": 1,
-					"pageSize": 18,
+					"pageSize": 50,
 					"type": 2,
 					"userId": this.$store.state.userInfo.userId,
 					orderState:0,
 				},
+				orderState:'',
 				updatedList:[],
 				typeList:[],
 				brandList:[],
+				typeListUpdate:false,
+				orderListUpdate:false,
+				mpKey:'0',
+				toEnd:false,
 			}
 		},
 		computed:{
@@ -96,6 +100,17 @@
 			// }
 		},
 		methods:{
+			
+			setUpdate(){
+				this.typeListUpdate=true
+				this.orderListUpdate=true
+			},
+			queryOrder(i){
+				this.orderState=i
+				this.$request('/api/build/order/all/list',{userId:this.$store.state.userInfo.userId,orderState:i}).then((data)=>{
+					this.$store.commit('setLIO',data.orderTasks)
+				})
+			},
 			updateProfile(){
 				this.$request('/api/build/user/existPassword',{}).then((data)=>{
 					this.existPassword=!Boolean(data.existPassword) 
@@ -103,19 +118,7 @@
 				})
 			},
 			share(){
-				// try{
-					// uni.shareWithSystem({
-					//   summary: '中山建材',
-					//   href: this.$store.state.downloadUrl,
-					//   success(){
-					//     // 分享完成，请注意此时不一定是成功分享
-					//   },
-					//   fail(){
-					//     // 分享失败
-					//   }
-					// })
-				// }
-				// catch(e){}
+				
 				uni.navigateTo({
 					url:'share/share'
 				})
@@ -131,7 +134,7 @@
 					this.$store.commit('setLIC',data.orderTasks)
 					// this.$forceUpdate()
 				})
-				this.$request('/api/build/order/all/list',{userId:this.$store.state.userInfo.userId}).then((data)=>{
+				this.$request('/api/build/order/all/list',{userId:this.$store.state.userInfo.userId,orderState:this.orderState}).then((data)=>{
 					this.$store.commit('setLIO',data.orderTasks)
 				})
 			},
@@ -143,24 +146,37 @@
 			},
 			changeBrand(i){
 				this.body.page=1
+				this.toEnd=false
 				this.body.brandId=this.$store.state.brandList[i].id
 				console.log(this.body)
 				this.$request(this.urls.typeQuote,this.body).then((data)=>{
 					this.typeList=data.commodities.records
+					if (data.commodities.records.length<this.body.pageSize) this.toEnd=true
 				})
 			},
 			loadMore(){
 				console.log('load')
-				this.body.page++
-				this.$request(this.urls.typeQuote,this.body).then((data)=>{
-					this.typeList.push(...data.commodities.records) 
-				})
+				if (!this.toEnd){
+					this.body.page++
+					this.$request(this.urls.typeQuote,this.body).then((data)=>{
+						if (data.commodities.records.length>0)
+							this.typeList.push(...data.commodities.records) 
+						else this.toEnd=true
+					})
+				}
+				
 			},
 			tabClick(i){
 				this.tabIndex=i
-				if (i==0){
+				if (i==2 && this.orderListUpdate) {
+					this.orderListUpdate=false
+					this.queryOrder(this.orderState)
+				}
+				if (i==0 && this.typeListUpdate) {
+					this.typeListUpdate=false
 					this.$request('/api/build/commodity/new/info',this.body).then((data)=>{
 						this.updatedList=data.commodities
+						if (this.updatedList.length>4)
 						this.updatedList.length=4
 					})
 					this.$request('/api/build/commodity/type/list',this.body).then((data)=>{
@@ -171,11 +187,17 @@
 			},
 			switchTab(e){
 				this.tabIndex=e.detail.current
-				if (e.detail.current==0) {
+				if (e.detail.current==2 && this.orderListUpdate) {
+					this.orderListUpdate=false
+					this.queryOrder(this.orderState)
+				}
+				
+				if (e.detail.current==0 && this.typeListUpdate) {
+					this.typeListUpdate=false
 					this.$request('/api/build/commodity/new/info',this.body).then((data)=>{
 						this.updatedList=data.commodities
+						if (this.updatedList.length>4)
 						this.updatedList.length=4
-						// console.log('update',this.updatedList)
 					})
 					this.$request('/api/build/commodity/type/list',this.body).then((data)=>{
 						this.typeList=data.commodities.records
@@ -257,23 +279,38 @@
 			// }
 		},
 		onShow() {
-			if (this.hasLogin){
-				this.updateOrder()
-				this.$request('/api/build/user/existPassword',{}).then((data)=>{
-					this.existPassword=!Boolean(data.existPassword) 
-					console.log('exits',this.existPassword)
-				})
-			}
-			
-		},
-		onLoad() {
+			this.body.page=1
+			this.toEnd=false
+			this.mpKey=Math.random()+''
 			this.$request('/api/build/commodity/new/info',this.body).then((data)=>{
 				this.updatedList=data.commodities
+				if (this.updatedList.length>4)
 				this.updatedList.length=4
 			})
 			this.$request('/api/build/commodity/type/list',this.body).then((data)=>{
 				this.typeList=data.commodities.records
+				if (data.commodities.records.length<this.body.pageSize) this.toEnd=true
 			})
+			if (this.hasLogin){
+				this.$request('/api/build/user/existPassword',{}).then((data)=>{
+					if (data.existPassword==0)
+					this.existPassword=true
+					else this.existPassword=false
+					console.log('exits',this.existPassword)
+				})
+				this.updateOrder()
+			}
+			
+		},
+		onLoad() {
+			// this.$request('/api/build/commodity/new/info',this.body).then((data)=>{
+			// 	this.updatedList=data.commodities
+			// 	if (this.updatedList.length>4)
+			// 	this.updatedList.length=4
+			// })
+			// this.$request('/api/build/commodity/type/list',this.body).then((data)=>{
+			// 	this.typeList=data.commodities.records
+			// })
 			this.$request(this.urls.typeList,{}).then((data)=>{
 				let tempList=[]
 				let tempItem={}
@@ -286,7 +323,11 @@
 				this.$store.commit('setCL',tempList)
 			})
 			this.$request('/api/build/commodity/brand/list',{}).then((data)=>{
-				data.subCategories.unshift({subCategoryName:'所有',id:''})
+				data.subCategories.unshift({subCategoryName:'全部',id:''})
+				data.subCategories.map((item)=>{
+					item.title=item.subCategoryName
+					
+				})
 				this.$store.commit('setBL',data.subCategories)
 			})
 			uni.getStorage({
@@ -294,8 +335,10 @@
 				success:res=>{
 					this.$store.commit('login',JSON.parse(res.data))
 					// console.log(this.$store.state.userInfo.token)
-					
-					
+					this.$request('/api/build/user/existPassword',{}).then((data)=>{
+						this.existPassword=!Boolean(data.existPassword) 
+						console.log('exits',this.existPassword)
+					})					
 					this.updateOrder()
 				},
 				fail() {
@@ -308,6 +351,7 @@
 			
 		},
 		mounted() {
+			console.log('mounted')
 			this.$request('/api/build/user/version/detail',{'version':100})
 			.then(data=>{
 				this.$store.state.downloadUrl=data.downloadAddress

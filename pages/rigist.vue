@@ -41,6 +41,8 @@
 					<view class="ul mt tip" @click="setStatus(0)">注册新账户</view>
 				</view>
 				<view class="glass formBody" v-else-if="status==2">
+					
+					<input placeholder="请输入手机号码" v-model="body.phone" class="input1 ml" placeholder-class="phc"/>
 					<input placeholder="请输入旧密码" v-model="body.oldPassword" password="true" class="input1 mt" placeholder-class="phc"/>
 					<input password="true" v-model="body.newPassword" placeholder="请输入您想设置的新密码" class="input1 mt" placeholder-class="phc"/>
 					<input password="true" v-model="body.newPassword2" placeholder="请再次输入" class="input1 mt" placeholder-class="phc"/>

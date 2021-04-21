@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mpframe": "/components/mpframe/mpframe",
+    "ay-qrcode": "/components/ay-qrcode/ay-qrcode"
+  }
+}

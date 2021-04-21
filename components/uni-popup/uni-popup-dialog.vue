@@ -152,6 +152,7 @@
 		width: 300px;
 		border-radius: 15px;
 		background-color: #fff;
+		// background-color: #eabf9f;
 	}
 
 	.uni-dialog-title {
@@ -162,6 +163,7 @@
 		justify-content: center;
 		padding-top: 15px;
 		padding-bottom: 5px;
+		// background-color: #eabf9f;
 	}
 
 	.uni-dialog-title-text {
@@ -192,13 +194,16 @@
 		border-top-color: #f5f5f5;
 		border-top-style: solid;
 		border-top-width: 1px;
+		background-color: #fff;
+		border-bottom-left-radius: 15px;
+		border-bottom-right-radius: 15px;
 	}
 
 	.uni-dialog-button {
 		/* #ifndef APP-NVUE */
 		display: flex;
 		/* #endif */
-
+		color: $text-color-placeholder;
 		flex: 1;
 		flex-direction: row;
 		justify-content: center;
@@ -217,7 +222,8 @@
 	}
 
 	.uni-button-color {
-		color: $uni-color-primary;
+		// color: $uni-color-primary;
+		color: $color-success;
 	}
 
 	.uni-dialog-input {
@@ -230,7 +236,8 @@
 	}
 
 	.uni-popup__warn {
-		color: $uni-color-warning;
+		// color: $uni-color-warning;
+		color: $color-warning;
 	}
 
 	.uni-popup__error {
@@ -238,6 +245,6 @@
 	}
 
 	.uni-popup__info {
-		color: #909399;
+		color: $text-color;
 	}
 </style>

@@ -3,7 +3,10 @@
 		<view :class="[direction==='column'?'uni-steps__column':'uni-steps__row']">
 			<view :class="[direction==='column'?'uni-steps__column-text-container':'uni-steps__row-text-container']">
 				<view v-for="(item,index) in options" :key="index" :class="[direction==='column'?'uni-steps__column-text':'uni-steps__row-text']">
-					<text :style="{color:cancel? 'red': (index<=active?activeColor:deactiveColor)}" :class="[direction==='column'?'uni-steps__column-title':'uni-steps__row-title']" v-if="active!==1 ||index!==2">{{item.title}}</text>
+					<view class="row" style="justify-content: center;">
+						<text :style="{color:index<=active?activeColor:deactiveColor}" :class="[direction==='column'?'uni-steps__column-title':'uni-steps__row-title']" v-if="active!==1 ||index!==2">{{item.title}}</text>
+						<view class="button fs12 ml pl pr" style="height: 20px;"  v-if='active==0 && index==0 && item.title.length<5 ' @click="$emit('cancelOrder')">取消</view>
+					</view>
 					<text :style="{color:index<=active?activeColor:deactiveColor}" :class="[direction==='column'?'uni-steps__column-desc':'uni-steps__row-desc'] " v-if='active==1 || index!==1'>{{item.desc}}</text>
 					<view class="button fs12 lightShadow" style="width: 80px;padding: 0;"  v-if='active==1 && index==2' @click="$emit('sign')">确认收货</view>
 				</view>
@@ -68,10 +71,7 @@
 					return []
 				}
 			} ,// 数据
-			cancel:{
-				type:Boolean,
-				default:false
-			}
+			
 		},
 		data() {
 			return {}
@@ -96,6 +96,7 @@
 		display: flex;
 		/* #endif */
 		flex-direction: column;
+		// align-items: center;
 	}
 
 	.uni-steps__column {
